@@ -167,11 +167,11 @@
   Made with endless love 💕 | Vinay → Neha
 </footer><div class="popup" id="popup">
   <div class="popup-content">
-    <h3>My Love ❤️</h3>
-    <p>No matter how many Valentine's Days come and go, my heart will always choose you.
-       You are my always and my forever.</p>
+    <h3 id="popupTitle">My Love ❤️</h3>
+    <p id="popupMessage"></p>
     <button class="close" onclick="closePopup()">Close</button>
   </div>
+</div>
 </div><script>
   function createHeart() {
     const heart = document.createElement('div');
@@ -185,8 +185,19 @@
   setInterval(createHeart, 320);
 
   function openPopup() {
-    document.getElementById('popup').style.display = 'flex';
-  }
+  const wishes = [
+    { title: '🌹 Rose Day', msg: 'Just like a rose, your love adds color and fragrance to my life.' },
+    { title: '🤗 Hug Day', msg: 'Your hugs are my safest place where all worries disappear.' },
+    { title: '😘 Kiss Day', msg: 'Every kiss from you seals my love for you forever.' },
+    { title: '💍 Promise Day', msg: 'I promise to love you, respect you, and stand by you always.' },
+    { title: '🧸 Teddy Day', msg: 'I want to be your comfort and warmth on every lonely day.' },
+    { title: '❤️ Valentine’s Day', msg: 'You are my today, my tomorrow, and my forever Valentine.' }
+  ];
+  const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
+  document.getElementById('popupTitle').innerText = randomWish.title;
+  document.getElementById('popupMessage').innerText = randomWish.msg;
+  document.getElementById('popup').style.display = 'flex';
+}
   function closePopup() {
     document.getElementById('popup').style.display = 'none';
   }
