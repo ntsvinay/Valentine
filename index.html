@@ -79,7 +79,7 @@
   </style>
 </head>
 <body>
-const music = document.getElementById("bgMusic");
+
 <audio id="bgMusic" loop>
   <source src="bollywood.mp3" type="audio/mpeg">
 </audio>
@@ -120,7 +120,7 @@ const music = document.getElementById("bgMusic");
     const today = new Date().getDate();
     return wishes.find(w => w.day === today) || wishes[Math.floor(Math.random() * wishes.length)];
   }
-
+const music = document.getElementById("bgMusic");
   function openPopup() {
   const wish = getTodayWish();
   document.getElementById('popupTitle').innerText = wish.title;
