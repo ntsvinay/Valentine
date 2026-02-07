@@ -1,9 +1,12 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Happy Valentine's Day Neha ❤️</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
     * { box-sizing: border-box; }
     body {
@@ -15,98 +18,161 @@
       overflow-x: hidden;
     }
     header { padding: 70px 20px 40px; }
-    h1 { font-family: 'Great Vibes', cursive; font-size: 3.8rem; }
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.8rem;
+    }
     h2 { font-weight: 300; }
+
     section { padding: 40px 20px; }
+
     .message {
-      max-width: 750px; margin: auto;
+      max-width: 750px;
+      margin: auto;
       background: rgba(255,255,255,0.18);
-      padding: 35px; border-radius: 30px;
+      padding: 35px;
+      border-radius: 30px;
       backdrop-filter: blur(6px);
       line-height: 1.8;
     }
+
     .signature { margin-top: 25px; font-weight: 600; }
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px; max-width: 1100px; margin: auto;
+      gap: 18px;
+      max-width: 1100px;
+      margin: auto;
     }
+
     .gallery img {
-      width: 100%; height: 280px; object-fit: cover;
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
       border-radius: 22px;
       box-shadow: 0 12px 30px rgba(0,0,0,0.35);
       transition: transform 0.4s ease;
     }
     .gallery img:hover { transform: scale(1.06); }
+
     .surprise-btn {
-      background: #fff; color: #ff4e8a;
-      border: none; padding: 14px 30px;
-      font-size: 1.05rem; border-radius: 30px;
-      cursor: pointer; margin-top: 25px; font-weight: 600;
+      background: #fff;
+      color: #ff4e8a;
+      border: none;
+      padding: 14px 30px;
+      font-size: 1.05rem;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-top: 25px;
+      font-weight: 600;
     }
+
     .popup {
-      position: fixed; inset: 0;
+      position: fixed;
+      inset: 0;
       background: rgba(0,0,0,0.7);
-      display: none; align-items: center; justify-content: center;
+      display: none;
+      align-items: center;
+      justify-content: center;
       z-index: 999;
     }
+
     .popup-content {
-      background: #fff; color: #333;
-      padding: 35px; border-radius: 25px;
+      background: #fff;
+      color: #333;
+      padding: 35px;
+      border-radius: 25px;
       max-width: 520px;
     }
+
     .popup-content h3 {
       font-family: 'Great Vibes', cursive;
-      color: #ff4e8a; font-size: 2.6rem;
+      color: #ff4e8a;
+      font-size: 2.6rem;
     }
+
     .close {
-      margin-top: 20px; background: #ff4e8a; color: #fff;
-      border: none; padding: 10px 22px; border-radius: 20px;
+      margin-top: 20px;
+      background: #ff4e8a;
+      color: #fff;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 20px;
       cursor: pointer;
     }
+
     footer { padding: 35px; font-size: 0.9rem; opacity: 0.9; }
+
     .heart, .emoji {
-      position: fixed; bottom: -20px;
+      position: fixed;
+      bottom: -20px;
       animation: float 6s linear infinite;
-      font-size: 20px; opacity: 0.8;
+      font-size: 20px;
+      opacity: 0.8;
     }
+
     @keyframes float {
       0% { transform: translateY(0); opacity: 0; }
       10% { opacity: 1; }
       100% { transform: translateY(-120vh); opacity: 0; }
     }
+
     audio { display: none; }
   </style>
 </head>
+
 <body>
 
+<!-- 🎶 Background Music -->
 <audio id="bgMusic" loop>
   <source src="bollywood.mp3" type="audio/mpeg">
 </audio>
+
 <header>
   <h1>Happy Valentine's Day Neha ❤️</h1>
   <h2>Every love story is beautiful, ours is my favorite</h2>
-</header><section>
+</header>
+
+<section>
   <div class="message">
     Neha ❤️<br><br>
     Loving you is the easiest and most beautiful thing I have ever done.
     You are my peace, my happiness, and my forever.
     <div class="signature">— Yours always, Vinay 💖</div>
+
     <button class="surprise-btn" onclick="openPopup()">Click for a Surprise 💝</button>
   </div>
-</section><section>
+</section>
+
+<section>
   <h2>Our Beautiful Memories 📸</h2><br>
   <div class="gallery">
-    <img src="img1.jpg"><img src="img2.jpg"><img src="img3.jpg">
-    <img src="img4.jpg"><img src="img5.jpg"><img src="img6.jpg">
+    <img src="img1.jpg">
+    <img src="img2.jpg">
+    <img src="img3.jpg">
+    <img src="img4.jpg">
+    <img src="img5.jpg">
+    <img src="img6.jpg">
   </div>
-</section><footer>Made with endless love 💕 | Vinay → Neha</footer><div class="popup" id="popup">
+</section>
+
+<footer>
+  Made with endless love 💕 | Vinay → Neha
+</footer>
+
+<!-- 💝 Popup -->
+<div class="popup" id="popup">
   <div class="popup-content">
     <h3 id="popupTitle"></h3>
     <p id="popupMessage"></p>
     <button class="close" onclick="closePopup()">Next Surprise</button>
   </div>
-</div><script>
+</div>
+
+<script>
+  const music = document.getElementById("bgMusic");
+
   const wishes = [
     { day: 7, title: '🌹 Rose Day', msg: 'Just like a rose, your love adds color and fragrance to my life.', emoji: '🌹' },
     { day: 8, title: '🧸 Teddy Day', msg: 'I want to be your comfort and warmth on every lonely day.', emoji: '🧸' },
@@ -122,25 +188,26 @@
   }
 
   function openPopup() {
-const music = document.getElementById("bgMusic");
-  const wish = getTodayWish();
-  document.getElementById('popupTitle').innerText = wish.title;
-  document.getElementById('popupMessage').innerText = wish.msg;
-  document.getElementById('popup').style.display = 'flex';
-  createEmoji(wish.emoji);
+    const wish = getTodayWish();
+    document.getElementById('popupTitle').innerText = wish.title;
+    document.getElementById('popupMessage').innerText = wish.msg;
+    document.getElementById('popup').style.display = 'flex';
 
-  // Play music after user click (browser allows this)
-  if (music.paused) {
-    music.play();
+    createEmoji(wish.emoji);
+
+    if (music && music.paused) {
+      music.play();
+    }
   }
-}
+
   function closePopup() {
     document.getElementById('popup').style.display = 'none';
   }
 
   function createEmoji(symbol) {
     const e = document.createElement('div');
-    e.className = 'emoji'; e.innerText = symbol;
+    e.className = 'emoji';
+    e.innerText = symbol;
     e.style.left = Math.random() * 100 + 'vw';
     e.style.animationDuration = (4 + Math.random() * 4) + 's';
     document.body.appendChild(e);
@@ -148,5 +215,7 @@ const music = document.getElementById("bgMusic");
   }
 
   setInterval(() => createEmoji('❤'), 350);
-</script></body>
+</script>
+
+</body>
 </html>
