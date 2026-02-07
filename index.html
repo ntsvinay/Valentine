@@ -120,8 +120,9 @@
     const today = new Date().getDate();
     return wishes.find(w => w.day === today) || wishes[Math.floor(Math.random() * wishes.length)];
   }
-const music = document.getElementById("bgMusic");
+
   function openPopup() {
+const music = document.getElementById("bgMusic");
   const wish = getTodayWish();
   document.getElementById('popupTitle').innerText = wish.title;
   document.getElementById('popupMessage').innerText = wish.msg;
