@@ -12,18 +12,51 @@ body {
   background: linear-gradient(135deg, #ff758c, #ff7eb3);
   text-align: center;
   color: white;
+  overflow-x: hidden;
+}
+
+/* ❤️ FLOATING HEARTS */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 22px;
+  animation: floatUp linear infinite;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0) scale(1); opacity: 1; }
+  to   { transform: translateY(-120vh) scale(1.5); opacity: 0; }
 }
 
 h1 {
   margin-top: 30px;
-  font-size: 2.3em;
+  font-size: 2.4em;
 }
 
 .subtitle {
-  opacity: 0.95;
-  font-size: 1.1em;
+  font-size: 1.15em;
+  margin-bottom: 15px;
 }
 
+/* 💌 WISHING TEXT */
+.wish-box {
+  background: rgba(255,255,255,0.15);
+  margin: 20px auto;
+  padding: 22px;
+  border-radius: 22px;
+  max-width: 700px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.wish-box p {
+  font-size: 1.05em;
+  line-height: 1.6;
+}
+
+/* 💝 BUTTON */
 button {
   background: white;
   color: #ff4d6d;
@@ -33,14 +66,14 @@ button {
   border-radius: 30px;
   cursor: pointer;
   margin: 25px 0;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
 button:hover {
   transform: scale(1.05);
 }
 
-/* 🌸 IMAGE GALLERY */
+/* 🌸 GALLERY */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -56,11 +89,6 @@ button:hover {
   object-fit: cover;
   border-radius: 18px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease;
-}
-
-.gallery img:hover {
-  transform: scale(1.05);
 }
 
 /* 💌 POPUP */
@@ -81,12 +109,21 @@ button:hover {
   border-radius: 25px;
   width: 85%;
   max-width: 420px;
-  animation: pop 0.4s ease;
+}/* 🌸 SHAYARI BOX */
+.shayari-box {
+  margin: 25px auto;
+  padding: 22px;
+  max-width: 750px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 22px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  font-size: 1.15em;
+  line-height: 1.8;
 }
 
-@keyframes pop {
-  from { transform: scale(0.8); opacity: 0; }
-  to   { transform: scale(1); opacity: 1; }
+.shayari-box p {
+  margin: 0;
 }
 </style>
 </head>
@@ -94,18 +131,32 @@ button:hover {
 <body>
 
 <h1>Happy Valentine Week Neha ❤️</h1>
-<p class="subtitle">One day. One feeling. One love — you 💕</p>
+<p class="subtitle">Every heartbeat whispers your name 💕</p>
+
+<!-- 💌 WISHING MESSAGE -->
+<div class="wish-box">
+  <p>
+    Neha,<br><br>
+    From the moment you came into my life, every ordinary day turned extraordinary.
+    Your smile is my peace, your voice is my favourite song,
+    and your love is the greatest blessing I’ve ever received.  
+    <br><br>
+    This Valentine week is just an excuse —
+    because every day with you feels like a celebration of love.
+  </p>
+  <p><strong>— Forever yours, Vinay ❤️</strong></p>
+</div>
 
 <button onclick="openPopup()">💝 Click for Today’s Surprise</button>
 
-<!-- 🌸 IMAGE SECTION -->
+<!-- 🌸 IMAGES -->
 <div class="gallery">
-  <img src="img1.jpg" alt="Neha 1">
-  <img src="img2.jpg" alt="Neha 2">
-  <img src="img3.jpg" alt="Neha 3">
-  <img src="img4.jpg" alt="Neha 4">
-  <img src="img5.jpg" alt="Neha 5">
-  <img src="img6.jpg" alt="Neha 6">
+  <img src="img1.jpg">
+  <img src="img2.jpg">
+  <img src="img3.jpg">
+  <img src="img4.jpg">
+  <img src="img5.jpg">
+  <img src="img6.jpg">
 </div>
 
 <!-- 🎵 MUSIC -->
@@ -118,44 +169,68 @@ button:hover {
   <div class="popup-box">
     <h2 id="popupTitle"></h2>
     <p id="popupMessage"></p>
-    <small>— Forever yours, Vinay ❤️</small>
+    <small>— Vinay ❤️</small>
   </div>
+</div>
+
+  <!-- 🌸 HINDI SHAYARI -->
+<div class="shayari-box">
+  <p>
+    तुम्हारी मुस्कान से ही तो<br>
+    मेरी हर सुबह शुरू होती है,<br>
+    तुम्हारे साथ से ही तो<br>
+    मेरी हर कहानी पूरी होती है।<br><br>
+
+    इस वैलेंटाइन नहीं,<br>
+    हर जन्म में सिर्फ तुम चाहिए —<br>
+    क्योंकि मोहब्बत नाम है तुम्हारा ❤️
+  </p>
 </div>
 
 <!-- 📧 EMAILJS -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
 <script>
+/* ❤️ FLOATING HEARTS */
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}, 350);
+
+/* EMAILJS INIT */
 (function(){
-  emailjs.init("W6XZpo4_VXnIXs9XH"); // 🔴 REPLACE
+  emailjs.init("W6XZpo4_VXnIXs9XH");
 })();
 
-const SERVICE_ID  = "service_559yt1g";   // 🔴 REPLACE
-const TEMPLATE_ID = "template_vnwmskh";  // 🔴 REPLACE
+const SERVICE_ID  = "service_559yt1g";
+const TEMPLATE_ID = "template_vnwmskh";
 
 const music = document.getElementById("bgMusic");
 
-/* 💖 DAY WISE WISH */
+/* DAY WISH */
 function getTodayWish() {
   const wishes = {
-    7:  { title:"🌹 Rose Day", msg:"Like a rose, your smile fills my life with fragrance 🌹" },
-    8:  { title:"💍 Propose Day", msg:"Every love story is beautiful, but ours is my favourite 💖" },
-    9:  { title:"🍫 Chocolate Day", msg:"Life is sweeter with you 😍" },
-    10: { title:"🧸 Teddy Day", msg:"If I were a teddy, I’d stay in your arms forever 🤗" },
-    11: { title:"🤝 Promise Day", msg:"I promise to love you more with every heartbeat ❤️" },
-    12: { title:"🤗 Hug Day", msg:"Your hug is my safest place 💕" },
-    13: { title:"💋 Kiss Day", msg:"One kiss, a million emotions 😘" },
-    14: { title:"❤️ Valentine’s Day", msg:"You are my today and all my tomorrows 💖" }
+    7:{title:"🌹 Rose Day",msg:"Like a rose, your smile fills my life with fragrance 🌹"},
+    8:{title:"💍 Propose Day",msg:"Every love story is beautiful, but ours is my favourite 💖"},
+    9:{title:"🍫 Chocolate Day",msg:"Life is sweeter with you 😍"},
+    10:{title:"🧸 Teddy Day",msg:"If I were a teddy, I’d stay in your arms forever 🤗"},
+    11:{title:"🤝 Promise Day",msg:"I promise to love you more every day ❤️"},
+    12:{title:"🤗 Hug Day",msg:"Your hug is my safest place 💕"},
+    13:{title:"💋 Kiss Day",msg:"One kiss, a million emotions 😘"},
+    14:{title:"❤️ Valentine’s Day",msg:"You are my today and all my tomorrows 💖"}
   };
-
-  const day = new Date().getDate();
-  return wishes[day] || {
+  return wishes[new Date().getDate()] || {
     title:"❤️ Love Day",
     msg:"Every day with you is Valentine’s Day 💕"
   };
 }
 
-/* 📧 SEND MAIL ONCE PER DAY */
+/* SEND MAIL ONCE */
 function sendMailOnce(wish) {
   const key = "mailSent_" + new Date().toDateString();
   if (localStorage.getItem(key)) return;
@@ -169,100 +244,19 @@ function sendMailOnce(wish) {
   localStorage.setItem(key, "true");
 }
 
-/* 💝 POPUP + MUSIC */
+/* POPUP */
 function openPopup() {
   const wish = getTodayWish();
-
-  document.getElementById("popupTitle").innerText = wish.title;
-  document.getElementById("popupMessage").innerText = wish.msg;
-  document.getElementById("popup").style.display = "flex";
-
+  popupTitle.innerText = wish.title;
+  popupMessage.innerText = wish.msg;
+  popup.style.display = "flex";
   music.currentTime = 0;
   music.play().catch(()=>{});
-
   sendMailOnce(wish);
 }
 
 function closePopup() {
-  document.getElementById("popup").style.display = "none";
-}
-</script>
-
-</body>
-</html></div>
-
-<!-- 📧 EMAILJS -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
-<script>
-/* =========================
-   🔑 EMAILJS CONFIG
-   ========================= */
-(function(){
-  emailjs.init("W6XZpo4_VXnIXs9XH"); // 🔴 REPLACE
-})();
-
-const SERVICE_ID  = "service_559yt1g";   // 🔴 REPLACE
-const TEMPLATE_ID = "template_vnwmskh";  // 🔴 REPLACE
-
-const music = document.getElementById("bgMusic");
-
-/* =========================
-   💖 DAY-WISE WISHES
-   ========================= */
-function getTodayWish() {
-  const wishes = {
-    7:  { title:"🌹 Rose Day", msg:"Like a rose, your smile fills my life with fragrance 🌹" },
-    8:  { title:"💍 Propose Day", msg:"Every love story is beautiful, but ours is my favourite 💖" },
-    9:  { title:"🍫 Chocolate Day", msg:"Life is sweeter with you, just like chocolate 😍" },
-    10: { title:"🧸 Teddy Day", msg:"If I were a teddy, I’d stay in your arms forever 🤗" },
-    11: { title:"🤝 Promise Day", msg:"I promise to love you more with every heartbeat ❤️" },
-    12: { title:"🤗 Hug Day", msg:"Your hug is my safest place 💕" },
-    13: { title:"💋 Kiss Day", msg:"One kiss, a million emotions 😘" },
-    14: { title:"❤️ Valentine’s Day", msg:"You are my today and all my tomorrows 💖" }
-  };
-
-  const day = new Date().getDate();
-  return wishes[day] || {
-    title:"❤️ Love Day",
-    msg:"Every single day with you is Valentine’s Day 💕"
-  };
-}
-
-/* =========================
-   📧 SEND MAIL (ONCE / DAY)
-   ========================= */
-function sendMailOnce(wish) {
-  const todayKey = "mailSent_" + new Date().toDateString();
-  if (localStorage.getItem(todayKey)) return;
-
-  emailjs.send(SERVICE_ID, TEMPLATE_ID, {
-    to_name: "Neha",
-    subject: wish.title,
-    message: wish.msg + "\n\n— Vinay ❤️"
-  });
-
-  localStorage.setItem(todayKey, "true");
-}
-
-/* =========================
-   💝 POPUP + MUSIC
-   ========================= */
-function openPopup() {
-  const wish = getTodayWish();
-
-  document.getElementById("popupTitle").innerText = wish.title;
-  document.getElementById("popupMessage").innerText = wish.msg;
-  document.getElementById("popup").style.display = "flex";
-
-  music.currentTime = 0;
-  music.play().catch(()=>{});
-
-  sendMailOnce(wish);
-}
-
-function closePopup() {
-  document.getElementById("popup").style.display = "none";
+  popup.style.display = "none";
 }
 </script>
 
